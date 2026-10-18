@@ -3,7 +3,6 @@ from fastapi.responses import JSONResponse
 from schema.userinput import UserInput
 
 
-import pandas as pd
 
 # import the ml model
 
@@ -36,7 +35,7 @@ def predict_premium(data: UserInput):
         'occupation': data.occupation
     }])
 
-    prediction = model.predict(input_df)[0]
+   
 
     return JSONResponse(status_code=200, content={'predicted_category': prediction})
 
