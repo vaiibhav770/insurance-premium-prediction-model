@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from schema.userinput import UserInput
-
+from Model.predict import predict_output, model, MODEL_VERSION
 
 
 # import the ml model
@@ -26,14 +26,16 @@ def health_check():
 @app.post('/predict')
 def predict_premium(data: UserInput):
 
-    input_df = pd.DataFrame([{
+    user_input = {
         'bmi': data.bmi,
         'age_group': data.age_group,
         'lifestyle_risk': data.lifestyle_risk,
         'city_tier': data.city_tier,
         'income_lpa': data.income_lpa,
         'occupation': data.occupation
-    }])
+    }
+
+    prediction = predict_output(user_input)
 
    
 
