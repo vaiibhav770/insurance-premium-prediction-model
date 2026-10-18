@@ -2,14 +2,11 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from schema.userinput import UserInput
 
-import pickle
+
 import pandas as pd
 
 # import the ml model
-with open('Model/model.pkl', 'rb') as f:
-    model = pickle.load(f)
 
-MODEL_VERSION= '1.0.0'
 
 app = FastAPI()
 
